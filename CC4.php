@@ -64,21 +64,6 @@ class CC4Template extends QuickTemplate {
     <?php if($this->data['userjs'    ]) { ?><script type="text/javascript" src="<?php $this->text('userjs'    ) ?>"></script><?php } ?>
     <?php if($this->data['userjsprev']) { ?><script type="text/javascript"><?php      $this->html('userjsprev') ?></script><?php   } ?>
     
-    <script type="text/javascript" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/niftycorners.js"></script>
-    <script type="text/javascript">
-        window.onload=function(){
-            if(!NiftyCheck())
-                return;
-            if (document.body.id) {
-                /*
-                bodytag = document.body.id;
-                selecteditem = bodytag.split("-");
-                toselect= "#"+bodytag+" #nav-"+selecteditem[1]+" span.nav-label";
-                */
-                //Rounded('#p-nav',"all","#f1fae0","#e8f3d4","smooth");
-            }
-        }
-    </script>
   </head>
   <body <?php if($this->data['body_ondblclick']) { ?>ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
         <?php if($this->data['nsclass'        ]) { ?>class="<?php      $this->text('nsclass')         ?>"<?php } ?>
@@ -100,7 +85,7 @@ class CC4Template extends QuickTemplate {
             <span class="img">
               <img src="http://creativecommons.org/images/find-8.png" border="0"/>
             </span>
-            <span class="option">Find</span>CC Licensed Work
+            <span class="option">Search</span>CC Licensed Work
           </a>
         </span>
         
@@ -114,16 +99,21 @@ class CC4Template extends QuickTemplate {
       </div>
     </div>
     <!-- END HEADER -->
-<div id="globalWrapper">
-	<!--<div id="header">
-		<div id="header-tab">
-			<a href="/Main_Page">
-			<img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/cc-title.png" border="0" /></a>
-		</div>
-		</div>
-    -->
-	<div id="wrapper"> 	<div id="wrapper-ie">
+        <div id="mainmenu">
+      <ul id="navbar" class="box">
+        <li class="inactive"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="active"><a href="/license/" title="License"><span>License</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="/participate/" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
+      </ul>
+      <div class="clear"></div>
+    </div>
+	<div class="box"> 	<div id="wrapper-ie">
+	
     <div id="main-content">
+    	  <?php
+          if ($this->data['title'] != 'Main Page') {
+              echo '<div id="title" class="block"><h2 class="firstHeading">'.htmlspecialchars($this->data['title']).'</h2></div>';
+          }
+      ?>
+      
     <!-- LOGIN SECTION -->
 	        <?php 
             $i="";
@@ -145,7 +135,7 @@ class CC4Template extends QuickTemplate {
                 $userLoggedIn = true;
             }
 	        if ($userLoggedIn) {
-	            echo '<div id="features">';
+	            echo '<div id="features"  class="content-box-right">';
 	            echo '<div class="portlet" id="p-personal">';
 	            echo "Logged in as ";
 	            echo '<ul><li>';
@@ -208,38 +198,13 @@ class CC4Template extends QuickTemplate {
       <?php 
           } 
           echo '</div>';
-       
+      } 
     ?>
-	<!-- BEGIN when user is logged in, use "blog"-->
-	<div id="blog">
+  <? if ($userLoggedIn) { ?>
+	<div id="alpha" class="content-box">
+	<? } ?>
 	  <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-	  <?php
-          if ($this->data['title'] != 'Main Page') {
-              echo '<h1 class="firstHeading">'.htmlspecialchars($this->data['title']).'</h1>';
-          }
-      ?>
-	  <div id="bodyContent">
-	    <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
-	    <div id="contentSub"><?php $this->html('subtitle') ?></div>
-	    <?php if($this->data['undelete']) { ?><div id="contentSub"><?php     $this->html('undelete') ?></div><?php } ?>
-	    <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
-	    <!-- start content -->
-	    <?php $this->html('bodytext') ?>
-	    <?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
-	    <!-- end content -->
-	    <div class="visualClear"></div>
-	  </div>
-	</div>
-	<!-- OTHERWISE use "page"-->
-	      <?php } else { ?>
 
-	 <div id="page">
-	  <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-	  <?php
-          if ($this->data['title'] != 'Main Page') {
-              echo '<h1 class="firstHeading">'.htmlspecialchars($this->data['title']).'</h1>';
-          }
-      ?>
 	  <div id="bodyContent">
 	    <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
 	    <div id="contentSub"><?php $this->html('subtitle') ?></div>
@@ -251,8 +216,7 @@ class CC4Template extends QuickTemplate {
 	    <!-- end content -->
 	    <div class="visualClear"></div>
 	  </div>
-	</div>
-	<?php } ?>  <!-- END LOGIN SECTION -->
+	<? if ($userLoggedIn) { ?></div><? } ?>
 	</div> <!-- end main-content -->
 	
 	
@@ -277,6 +241,8 @@ class CC4Template extends QuickTemplate {
 					</ul>
 			</div>
 
+      </div> <!-- end wrapper-ie -->
+      </div> <!-- end wrapper -->
   <div id="footer">
   
   <div id="cc"><a rel="license" title="This wiki is licensed to the public under the Creative Commons Attribution 2.5 License" href="http://creativecommons.org/licenses/by/2.5/"><img src="http://creativecommons.org/images/public/somerights20.png"  border="0" alt="Some Rights Reserved"/></a> </div>
@@ -324,9 +290,6 @@ class CC4Template extends QuickTemplate {
 	  <?php if($this->data['about'     ]) { ?><div id="f-about"><?php      $this->html('about')      ?></div><?php } ?>
           </div>
       </div> <!-- end footer -->
-      </div> <!-- end wrapper-ie -->
-      </div> <!-- end wrapper -->
-    </div>
     <?php $this->html('reporttime') ?>
 
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
