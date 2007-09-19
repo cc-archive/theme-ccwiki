@@ -266,7 +266,7 @@ class CC4Template extends QuickTemplate {
 		    $loginvar="anonlogin";
 	    }
       echo '<li><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</li>';
-      echo '<li style="background: url(http://www.openid.net/login-bg.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in using your OpenID</a></li>';
+      ?><li style="background: url(<?php $this->text('stylepath'); ?>/<?php $this->text('stylename'); ?>/images/openid.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in using your OpenID</a></li><?
               //print_r($this->data['personal_urls'][$loginvar]);
 		}
     ?>
