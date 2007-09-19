@@ -49,13 +49,10 @@ class CC4Template extends QuickTemplate {
 	  type="image/x-icon" />
     <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css"; /*]]>*/</style>
     <link rel="stylesheet" type="text/css" media="print" href="<?php $this->text('stylepath') ?>/common/commonPrint.css" />
-    <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/niftycorners.css"; /*]]>*/</style>
-    <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/niftycorners.css"; /*]]>*/</style>
-    <style type="text/css" media="print">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/niftycorners-print.css"; /*]]>*/</style>
-
     <!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css";</style><![endif]-->
     <!--[if IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE55Fixes.css";</style><![endif]-->
     <!--[if gte IE 6]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE60Fixes.css";</style><![endif]-->
+
     <!--[if IE]><script type="text/javascript" src="<?php $this->text('stylepath') ?>/common/IEFixes.js"></script>
     <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
     <?php if($this->data['jsvarurl'  ]) { ?><script type="text/javascript" src="<?php $this->text('jsvarurl'  ) ?>"></script><?php } ?>
@@ -71,7 +68,7 @@ class CC4Template extends QuickTemplate {
 	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
 	<!-- HEADER -->
 	<div id="header-wrapper">
-      <div id="header-main">
+      <div id="header-main" class="box">
         <span class="publish">
           <a href="http://creativecommons.org/license/" class="cc-actions">
             <span class="img">
@@ -101,7 +98,7 @@ class CC4Template extends QuickTemplate {
     <!-- END HEADER -->
         <div id="mainmenu">
       <ul id="navbar" class="box">
-        <li class="inactive"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="active"><a href="/license/" title="License"><span>License</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="/participate/" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
+        <li class="inactive"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="inactive"><a href="/license/" title="License"><span>License</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="active"><a href="/participate/" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
       </ul>
       <div class="clear"></div>
     </div>
@@ -220,18 +217,15 @@ class CC4Template extends QuickTemplate {
 	</div> <!-- end main-content -->
 	
 	
-				<div id="sidebar">
-				<ul class="nav">
-				  	<li><a href="/">Home</a></li>
-					<li><a href="/Frequently_Asked_Questions">FAQ</a></li>
-		 			<li><a href="/CcWiki:About">About</a></li>
-		 			<li><a href="/Developer">Developers</a></li>
-		 			<li><a href="http://creativecommons.org/">creativecommons.org</a></li> 
-					<li><a href="http://creativecommons.org/find/">Find Content</a></li>
-					<li><a href="http://creativecommons.org/license/">License Content</a></li>
-					<li><a href="http://creativecommons.org/worldwide/">Worldwide</a></li>
- 				</ul>
-					<h4>The Commons</h4>
+				<div id="sidebar" class="content-box">
+    			<h4><a href="http://creativecommons.org/worldwide">International</a></h4>
+          <select id="international" name="sortby" onchange="orderby(this)">
+            <option value="">Select a jurisdiction</option>
+            <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+          </select>
+          <span class="international"><a href="http://creativecommons.org/worldwide">More information</a></span>
+				  
+					<h4><br/>The Commons</h4>
 					<ul> 
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/sc.png"/> <a href="http://sciencecommons.org">Science Commons</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/ic.png"/> <a href="http://icommons.org">iCommons</a></li>
@@ -239,18 +233,47 @@ class CC4Template extends QuickTemplate {
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/labs.png"/> <a href="http://labs.creativecommons.org">ccLabs</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/mix.png"/> <a href="http://ccmixter.org">ccMixter</a></li>
 					</ul>
+					<br/>
+					<h4>Explore</h4>
+					</ul>
+					 <li><a href="/">Main Page</a></li>
+					 <li><a href="/Developer">Developer Portal</a></li>
+					 <li><a href="/Salon">CC Salons</a></li>
+					 <li><a href="/Frequently_Asked_Questions">CC FAQ</a></li>
+					 <li><a href="/Content_Curators">Content Directories</a></li>
+					</ul>
 			</div>
 
       </div> <!-- end wrapper-ie -->
       </div> <!-- end wrapper -->
   <div id="footer">
-  
-  <div id="cc"><a rel="license" title="This wiki is licensed to the public under the Creative Commons Attribution 2.5 License" href="http://creativecommons.org/licenses/by/2.5/"><img src="http://creativecommons.org/images/public/somerights20.png"  border="0" alt="Some Rights Reserved"/></a> </div>
- <div id="mw"><a href="http://www.mediawiki.org/"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/mediawiki.png" border="0" alt=""/></a></div>
+   <div class="box">
+
  
- 
-	<div id="p-search" class="portlet">
-	  <div class="pBody">
+ 	  <ul>
+	    <?php foreach($this->data['content_actions'] as $key => $action) {
+	       ?><li><a href="<?php echo htmlspecialchars($action['href']) ?>"><?php
+	       echo htmlspecialchars($action['text']) ?></a></li><?php
+	     } ?>
+    	  <?php if($this->data['lastmod'   ]) { ?><li><?php    $this->html('lastmod')    ?></li><?php } ?>
+	  </ul>
+    
+    <ul> 
+     <?php if(!$userLoggedIn) { 
+	    if ($this->data['personal_urls']['login']) {
+		    $loginvar="login";
+	    } else {
+		    $loginvar="anonlogin";
+	    }
+      echo '<li><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</li>';
+      echo '<li style="background: url(http://www.openid.net/login-bg.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in using your OpenID</a></li>';
+              //print_r($this->data['personal_urls'][$loginvar]);
+		}
+    ?>
+ 	  <?php if($this->data['about'     ]) { ?><li><?php      $this->html('about')      ?></li><?php } ?>
+    </ul>
+    
+	  <div id="p-search">
 	    <form name="searchform" action="<?php $this->text('searchaction') ?>" id="searchform">
         <!--<label for="searchInput"><?php $this->msg('search') ?></label>-->
 	      <input id="searchInput" name="search" type="text"
@@ -267,28 +290,23 @@ class CC4Template extends QuickTemplate {
                 -->
 	    </form>
 	  </div>
-	</div>
-      <?php if(!$userLoggedIn) { 
-	      if ($this->data['personal_urls']['login']) {
-		      $loginvar="login";
-	      } else {
-		      $loginvar="anonlogin";
-	      }
-              echo '<div id="f-login"><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.
-              htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</div>';
-              echo '<div id="f-login"><p style="background: url(http://www.openid.net/login-bg.gif) no-repeat 4px 40%; color: #000; border: 1px solid #ccc; margin-left: auto; margin-right: auto; padding: 0.4em 0 0.4em 25px; width: 21em">You can also <a href="/Special:OpenIDLogin">log in using your OpenID</a>.</p></div>';
-              //print_r($this->data['personal_urls'][$loginvar]);
-		}
-      ?>
+
 	<?php /*if($this->data['copyrightico']) { ?><div id="f-copyrightico"><?php $this->html('copyrightico') ?></div><?php } */?>
-	<div id="f-list">
-	  <?php if($this->data['lastmod'   ]) { ?><div id="f-lastmod"><?php    $this->html('lastmod')    ?></div><?php } ?>
+	<ul>
+
 	  <?php if($this->data['viewcount' ] && $userLoggedIn) { ?><div id="f-viewcount"><?php  $this->html('viewcount')  ?></div><?php } ?>
-	  <?php if($this->data['credits'   ]) { ?><div id="f-credits"><?php    $this->html('credits')    ?></div><?php } ?>
-	  <?php if($this->data['copyright' ]) { ?><div id="f-copyright"><?php  $this->html('copyright')  ?></div><?php } ?>
+	  <?php if($this->data['credits'   ]) { ?><li id="f-credits"><?php    $this->html('credits')    ?></li><?php } ?>
 	  <?php /*if($this->data['disclaimer']) { ?><div id="f-disclaimer"><?php $this->html('disclaimer') ?></div><?php }*/ ?>
-	  <?php if($this->data['about'     ]) { ?><div id="f-about"><?php      $this->html('about')      ?></div><?php } ?>
-          </div>
+
+          </ul>
+        </div>
+        <div id="license">
+          <p class="box">
+            <a href="http://www.mediawiki.org/"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/mediawiki.png" border="0" alt="" id="mw" /></a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a>
+            Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
+          </p>
+        </div>
       </div> <!-- end footer -->
     <?php $this->html('reporttime') ?>
 
