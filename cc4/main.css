@@ -2,7 +2,7 @@
 
 /*** standard html ***/
 * { margin: 0; padding: 0; }
-body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; text-align: center; padding:0 !important; }
+body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !important; line-height:145% !important; text-align: center; padding:0 !important; }
 html>body {
 /*    font-size: 0.8em;*/
 }
@@ -304,7 +304,7 @@ hr {
     padding: 8pt;
     font-size: 95%;
     float: right;
-    margin: 0 0 1em 2em;
+    margin: 2em;
     width: 24em;
 }
 #toc ul {
@@ -770,7 +770,7 @@ a.cc-actions:hover {
 }
   
 /* nav tab-bar */
-#mainmenu {	position: relative; padding-top: 0.6em; background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ margin-bottom: 10px; }
+#mainmenu {	position: relative;  background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ margin-bottom: 10px; }
 ul#navbar { list-style-type: none; }
 ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #f0f4f1; }
 ul#navbar li.edit { margin-left: 15px; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #efe2e2; }
@@ -801,6 +801,7 @@ ul#navbar li.edit a:hover { background: url("/images/tab-body-edit.png") no-repe
 #title img {  border: 1px solid #666; padding: 0 !important; margin-right: 15px; }
 #title #blurb { font-size: 60%; margin-bottom: 15px; }
 
+.block { clear: both; margin-bottom: 35px; padding-left: 1%; padding-right: 10%; }
 .block .title, #title { font-size: 175%; }
 .block .title a:link, .block .title a:visited { color: #383838; }
 .block h4.meta { color: #aaa; margin-bottom: 7px; font-variant: normal; font-size: 105%; padding-left: 0 !important; }
