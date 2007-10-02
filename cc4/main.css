@@ -62,6 +62,7 @@ table + a + h1, table + a + h2, table + a + h3, table + a + h4, table + a + h5, 
 }
 
 ul { padding: 10px; }
+p { margin-bottom: 1em; }
 
 hr {
 }
