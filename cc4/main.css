@@ -110,9 +110,11 @@ hr {
     position: absolute;
     /*top: -100px;
     right: 1em;*/
-    top: 20px; right:1em;
+    top: 0px; right:0;
     z-index: top !important;
   color: #fff;
+  background-color: #334a33;
+  padding: 5px 10px 5px;
 }
 
 
