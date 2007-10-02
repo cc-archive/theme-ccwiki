@@ -228,6 +228,7 @@ class CC4Template extends QuickTemplate {
 					<ul> 
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/sc.png"/> <a href="http://sciencecommons.org">Science Commons</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/ic.png"/> <a href="http://icommons.org">iCommons</a></li>
+					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/learn.png"/> <a href="http://learn.creativecommons.org">ccLearn</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/labs.png"/> <a href="http://labs.creativecommons.org">ccLabs</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/mix.png"/> <a href="http://ccmixter.org">ccMixter</a></li>
 					</ul>
