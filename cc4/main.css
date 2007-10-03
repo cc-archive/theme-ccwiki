@@ -2,7 +2,7 @@
 
 /*** standard html ***/
 * { margin: 0; padding: 0; }
-body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !important; line-height:145% !important; text-align: center; padding:0 !important; }
+body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !important; line-height:145% !important; text-align: center; padding:0 !important; margin:0 !important; }
 
 
 .box { text-align: left; margin: 0 auto; width: 91%; min-width: 765px; max-width: 1000px; } /* replaces #wrapper */
