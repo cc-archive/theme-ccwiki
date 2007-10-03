@@ -1,4 +1,4 @@
-/**** CSS for mono.html ****/
+//**** CSS for mono.html ****/
 
 /*** standard html ***/
 * { margin: 0; padding: 0; }
@@ -48,8 +48,8 @@ a img {
 }
 
 
-h1, h2, h3 { line-height: 120%; font-size: 150%; font-family: Georgia, serif; }
-h2 { margin-top: 25px; line-height: 140%; margin-bottom: 12px; }
+h1, h2, h3 { line-height: 120%; font-family: Georgia, serif; }
+h2 { font-size: 175%; margin-top: 25px; line-height: 140%; margin-bottom: 12px; }
 h3 { font-size: 125%; margin-top: 18px; }
 h4 { color: #773; font-size: 105%; font-weight: bold;}
 h4 a:link, h4 a:visited { color: #773; }
@@ -61,8 +61,8 @@ table + a + h1, table + a + h2, table + a + h3, table + a + h4, table + a + h5, 
     margin-top: 1.5em;
 }
 
-p { margin-bottom: 1em; }
 ul { padding: 10px; }
+p { margin-bottom: 1em; }
 
 hr {
 }
@@ -130,6 +130,8 @@ hr {
     margin: 2em 0em 4em;
 
 }
+
+#printfooter { display:none; }
 
 #footer { clear: both; background-color: #f2f4f2; margin-top: 60px; padding: 15px 0; color: #555; font-size: 90%; }
 #footer #license { clear: both; border-top: 1px solid #ddd; padding-top: 20px; padding-bottom: 1.5em; text-align: left; }
@@ -574,7 +576,7 @@ ul#navbar li.edit { margin-left: 15px; background: url("images/tab-bg.png") repe
 ul#navbar li.active { margin-top: 0; font-weight: bold; height: 2.5em; }
 
 ul#navbar a {display: block; color: #333; background: url("images/tab-body-dark.png") no-repeat top right ;  }
-ul#navbar li.active a { text-decoration:underline; }
+/*ul#navbar li.active a { text-decoration:underline; }*/
 ul#navbar a span { display: block; padding: 0.5em 1.4em 0.2em; padding-top: 0.7em; background: url("images/tab-left-dark.png") no-repeat top left; }
 
 ul#navbar a:hover {text-decoration: none !important; color: #333;  background: url("images/tab-body-lit.png") no-repeat top right #fff; }
