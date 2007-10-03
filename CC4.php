@@ -124,25 +124,49 @@ class CC4Template extends QuickTemplate {
                 } 
                 $navlist .= '>';
                 $navlist .= htmlspecialchars($item['text']).'</a></span> ';
-                if ($i < 2) $navlist .= ": ";
+                if ($i < 2) $navlist .= ":<br/>";
             }
            // Hack to work-around broken MediaWiki stuff... 
             
             if (!ereg("Special:Userlogin",$navlist) || (!$this->data['personal_urls'])) {
                 $userLoggedIn = true;
-            }
+            } ?>
+
+	  <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
+
+	  <div class="block" id="bodyContent">
+	    <div id="contentSub"><?php $this->html('subtitle') ?></div>
+	    <?php if($this->data['undelete']) { ?><div id="contentSub"><?php     $this->html('undelete') ?></div><?php } ?>
+	    <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
+	    <!-- start content -->
+	    <?php $this->html('bodytext') ?>
+	    <?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
+	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div> <!-- end main-content -->
+	
+	
+				<div id="sidebar" class="content-box">
+    			<h4><a href="http://creativecommons.org/worldwide" class="jurisdiction">International</a></h4>
+          <select id="international" name="sortby" onchange="orderby(this)">
+            <option value="">Select a jurisdiction</option>
+            <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+          </select>
+          <span class="international"><a href="http://creativecommons.org/worldwide">More information</a></span>
+
+<!-- logged in stuff -->
+<?
 	        if ($userLoggedIn) {
-	            echo '<div id="features"  class="content-box-right">';
+	            echo '<h4>Wiki Toolbox</h4>';
 	            echo '<div class="portlet" id="p-personal">';
-	            echo "Logged in as ";
-	            echo '<ul><li>';
+	            echo "<p>Logged in as ";
 	            echo $navlist;
-	            echo '</li></ul>';
-	            echo '</div>';
+	            echo '</p></div>';
 	        ?>
         
 	<div id="p-cactions" class="portlet">
-      Views:
+    <h4 style="margin-bottom:0">Views</h4>
 	  <ul>
 	    <?php foreach($this->data['content_actions'] as $key => $action) {
 	       ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
@@ -153,7 +177,7 @@ class CC4Template extends QuickTemplate {
 	  </ul>
 	</div>
 	<div class="portlet" id="p-tb">
-      <?php $this->msg('toolbox') ?>:
+      <h4 style="margin-bottom:0"><?php $this->msg('toolbox') ?></h4>
 	    <ul>
 			<li><a href="http://wiki.creativecommons.org/Special:Recentchanges">Recent Changes</a></li>
 				<!--
@@ -194,35 +218,10 @@ class CC4Template extends QuickTemplate {
       
       <?php 
           } 
-          echo '</div>';
       } 
     ?>
-  <? if ($userLoggedIn) { ?>
-	<div id="alpha" class="content-box">
-	<? } ?>
-	  <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 
-	  <div class="block" id="bodyContent">
-	    <div id="contentSub"><?php $this->html('subtitle') ?></div>
-	    <?php if($this->data['undelete']) { ?><div id="contentSub"><?php     $this->html('undelete') ?></div><?php } ?>
-	    <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
-	    <!-- start content -->
-	    <?php $this->html('bodytext') ?>
-	    <?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
-	    <!-- end content -->
-	    <div class="visualClear"></div>
-	  </div>
-	<? if ($userLoggedIn) { ?></div><? } ?>
-	</div> <!-- end main-content -->
-	
-	
-				<div id="sidebar" class="content-box">
-    			<h4><a href="http://creativecommons.org/worldwide" class="jurisdiction">International</a></h4>
-          <select id="international" name="sortby" onchange="orderby(this)">
-            <option value="">Select a jurisdiction</option>
-            <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
-          </select>
-          <span class="international"><a href="http://creativecommons.org/worldwide">More information</a></span>
+<!-- end logged in stuff -->
 				  
 					<h4><br/>The Commons</h4>
 					<ul> 
