@@ -235,7 +235,9 @@ class CC4Template extends QuickTemplate {
 					<h4>Explore</h4>
 					</ul>
 					 <li><a href="/">Main Page</a></li>
+					 <li><a href="/Creative_Commons_Wiki:About">About CC Wiki</a></li>
 					 <li><a href="/Developer">Developer Portal</a></li>
+					 <li><a href="/Creative_Commons_Wiki:Community_Portal">Community Portal</a></li>
 					 <li><a href="/Salon">CC Salons</a></li>
 					 <li><a href="/Frequently_Asked_Questions">CC FAQ</a></li>
 					 <li><a href="/Content_Curators">Content Directories</a></li>
