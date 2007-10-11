@@ -504,7 +504,7 @@ span.diffchange { color: red; font-weight: bold;}
 	  
 	  #sidebar h4 {
 	  	font-size: 1em;
-	  	
+	  	margin-bottom: 0;
 	  }
       #sidebar ul {
       	list-style:  none;
