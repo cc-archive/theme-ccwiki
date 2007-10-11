@@ -166,25 +166,22 @@ class CC4Template extends QuickTemplate {
 <!-- logged in stuff -->
 <?
 	        if ($userLoggedIn) {
-	            echo '<h4>Wiki Toolbox</h4>';
-	            echo '<div class="portlet" id="p-personal">';
+	            echo '<h4><br/>Wiki Toolbox</h4>';
 	            echo "<p>Logged in as ";
 	            echo $navlist;
-	            echo '</p></div>';
+	            echo '</p>';
 	        ?>
         
-	<div id="p-cactions" class="portlet">
-    <h4 style="margin-bottom:0">Views</h4>
-	  <ul>
-	    <?php foreach($this->data['content_actions'] as $key => $action) {
-	       ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
-	       <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?>
-	       ><a href="<?php echo htmlspecialchars($action['href']) ?>"><?php
-	       echo htmlspecialchars($action['text']) ?></a></li>
-	    <?php } ?>
-	  </ul>
-	</div>
-	<div class="portlet" id="p-tb">
+  <h4 style="margin-bottom:0"><br/>Views</h4>
+  <ul>
+    <?php foreach($this->data['content_actions'] as $key => $action) {
+       ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
+       <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?>
+       ><a href="<?php echo htmlspecialchars($action['href']) ?>"><?php
+       echo htmlspecialchars($action['text']) ?></a></li>
+    <?php } ?>
+  </ul>
+
       <h4 style="margin-bottom:0"><?php $this->msg('toolbox') ?></h4>
 	    <ul>
 			<li><a href="http://wiki.creativecommons.org/Special:Recentchanges">Recent Changes</a></li>
@@ -208,7 +205,6 @@ class CC4Template extends QuickTemplate {
 	        ?>"><?php $this->msg($special) ?></a></li><?php } ?>
 	      <?php } ?>
 	    </ul>
-	</div>
        
 	<?php if( $this->data['language_urls'] ) { ?><div id="p-lang" class="portlet">
 	  <h5><?php $this->msg('otherlanguages') ?></h5>
