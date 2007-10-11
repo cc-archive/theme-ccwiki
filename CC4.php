@@ -48,6 +48,8 @@ class CC4Template extends QuickTemplate {
           href="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/favicon.ico"
 	  type="image/x-icon" />
     <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css"; /*]]>*/</style>
+    <link href="http://staging.creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
+    <link href="http://creativecommons.org/includes/progress.css?<?= rand()?>" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" media="print" href="<?php $this->text('stylepath') ?>/common/commonPrint.css" />
     <!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css";</style><![endif]-->
     <!--[if IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE55Fixes.css";</style><![endif]-->
@@ -154,6 +156,12 @@ class CC4Template extends QuickTemplate {
             <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
           </select>
           <span class="international"><a href="http://creativecommons.org/worldwide">More information</a></span>
+
+          <h4><br/>Campaign</h4>
+    			<div id="campaign">
+      			<div class="progress" onclick="window.location = 'http://support.creativecommons.org';"><span>&nbsp;</span></div>
+  				  <div class="results"><a href="http://support.creativecommons.org/"><?= money_format('$%.0i', file_get_contents('http://creativecommons.org/includes/total.txt')) ?> / $500,000</a></div>
+  			  </div>  
 
 <!-- logged in stuff -->
 <?
