@@ -157,7 +157,7 @@ class CC4Template extends QuickTemplate {
           </select>
           <span class="international"><a href="http://creativecommons.org/worldwide">More information</a></span>
 
-          <h4><br/>Campaign</h4>
+          <h4><br/>Fundraising Campaign</h4>
     			<div id="campaign">
       			<div class="progress" onclick="window.location = 'http://support.creativecommons.org';"><span>&nbsp;</span></div>
   				  <div class="results"><a href="http://support.creativecommons.org/"><?= money_format('$%.0i', file_get_contents('http://creativecommons.org/includes/total.txt')) ?> / $500,000</a></div>
