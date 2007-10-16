@@ -48,7 +48,7 @@ class CC4Template extends QuickTemplate {
           href="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/favicon.ico"
 	  type="image/x-icon" />
     <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css"; /*]]>*/</style>
-    <link href="http://staging.creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
+    <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
     <link href="http://creativecommons.org/includes/progress.css?<?= rand()?>" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" media="print" href="<?php $this->text('stylepath') ?>/common/commonPrint.css" />
     <!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css";</style><![endif]-->
