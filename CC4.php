@@ -230,10 +230,11 @@ class CC4Template extends QuickTemplate {
 					<h4><br/>The Commons</h4>
 					<ul> 
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/sc.png"/> <a href="http://sciencecommons.org">Science Commons</a></li>
-					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/ic.png"/> <a href="http://icommons.org">iCommons</a></li>
+					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/cci.png"/> <a href="http://creativecommons.org/international">ccInternational</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/learn.png"/> <a href="http://learn.creativecommons.org">ccLearn</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/labs.png"/> <a href="http://labs.creativecommons.org">ccLabs</a></li>
 					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/mix.png"/> <a href="http://ccmixter.org">ccMixter</a></li>
+					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/ic.png"/> <a href="http://icommons.org">iCommons</a></li>
 					</ul>
 					<br/>
 					<h4>Explore</h4>
