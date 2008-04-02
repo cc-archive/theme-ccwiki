@@ -164,12 +164,12 @@ class CC4Template extends QuickTemplate {
             <h4>Search</h4>
             <form name="searchform" action="<?php $this->text('searchaction') ?>" id="searchform">
               <!--<label for="searchInput"><?php $this->msg('search') ?></label>-->
-      	      <input id="searchInput" name="search" type="text"
+      	      <input id="s" name="search" type="text"
       	        <?php if($this->haveMsg('accesskey-search')) {
       	          ?>accesskey="<?php $this->msg('accesskey-search') ?>"<?php }
       	        if( isset( $this->data['search'] ) ) {
       	          ?> value="<?php $this->text('search') ?>"<?php } ?> />
-      	      <input type='submit' name="go" class="searchButton" id="searchSubmit"
+      	      <input type='submit' name="go" id="searchSubmit"
       	        value="<?php $this->msg('search') ?>" /> 
                         <!--
                       <input type='submit' name="fulltext"
@@ -259,7 +259,7 @@ class CC4Template extends QuickTemplate {
     		    $loginvar="anonlogin";
     	    }
           echo '<li><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</li>';
-          ?><li style="background: url(<?php $this->text('stylepath'); ?>/<?php $this->text('stylename'); ?>/images/openid.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in using your OpenID</a></li>
+          ?><li style="background: url(<?php $this->text('stylepath'); ?>/<?php $this->text('stylename'); ?>/images/openid.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in with OpenID</a></li>
       </ul>
     </div>
     <?
