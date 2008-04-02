@@ -488,7 +488,32 @@ span.diffchange { color: red; font-weight: bold;}
   #alpha, #blog { width: 77%;} /* + .content-box */  /* #blog and #features - Deprecated, use #alpha and #beta respectively */
   #beta, #features { width: 20%; margin-left: 0.5%;} /* + .content-box */
         
-#sidebar { font-size: 0.85em; width: 15%; margin-left: 1%; margin-right: 0 !important; padding-left: 5px; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
+	#sidebar { 
+		font-size: 0.85em; 
+		width: 15%; 
+		margin-left: 1%; 
+		margin-right: 0 !important; 
+		padding-left: 5px; 
+		padding-bottom: 3em; 
+	/*	background-color: #f9faf9; */
+	} /* + .content-box */
+
+	#sidebar .sideitem {
+		clear: both;
+		margin-bottom: 1em;
+		padding-bottom: 0.7em;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	#sidebar .sideitem #s	{
+		width: 95%;
+		margin-bottom: 0.5em;
+	}
+
+	#sidebar .sideitem #searchsubmit	{
+		font-size: 0.9em;
+		float: right;
+	}
       
       
       #sidebar .nav {

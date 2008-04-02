@@ -151,96 +151,141 @@ class CC4Template extends QuickTemplate {
 	
 	
 				<div id="sidebar" class="content-box">
-    			<h4><a href="http://creativecommons.org/worldwide" class="jurisdiction">International</a></h4>
-          <select id="international" name="sortby" onchange="orderby(this)">
-            <option value="">Select a jurisdiction</option>
-            <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
-          </select>
-          <span class="international"><a href="http://creativecommons.org/worldwide">More information</a></span>
+    			<div class="sideitem">
+    			  <h4><a href="http://creativecommons.org/worldwide" class="jurisdiction">International</a></h4>
+            <select id="international" name="sortby" onchange="orderby(this)">
+              <option value="">Select a jurisdiction</option>
+              <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+            </select>
+            <span class="international"><a href="http://creativecommons.org/worldwide">More information</a></span>
+          </div>
 
+          <div class="sideitem">
+            <h4>Search</h4>
+            <form name="searchform" action="<?php $this->text('searchaction') ?>" id="searchform">
+              <!--<label for="searchInput"><?php $this->msg('search') ?></label>-->
+      	      <input id="s" name="search" type="text"
+      	        <?php if($this->haveMsg('accesskey-search')) {
+      	          ?>accesskey="<?php $this->msg('accesskey-search') ?>"<?php }
+      	        if( isset( $this->data['search'] ) ) {
+      	          ?> value="<?php $this->text('search') ?>"<?php } ?> />
+      	      <input type='submit' name="go" id="searchsubmit"
+      	        value="<?php $this->msg('search') ?>" /> 
+                        <!--
+                      <input type='submit' name="fulltext"
+      	        class="searchButton"
+      	        value="<?php $this->msg('search') ?>" />
+                      -->
+      	    </form>
+            <div class="clear"></div>
+          </div>
 
-<!-- logged in stuff -->
-<?
-	        if ($userLoggedIn) {
-	            echo '<h4><br/>Wiki Toolbox</h4>';
-	            echo "<p>Logged in as ";
-	            echo $navlist;
-	            echo '</p>';
-	        ?>
+      <!-- logged in stuff -->
+      <?
+      if ($userLoggedIn) {
+          echo '<div class="sideitem">';
+          echo '<h4>Wiki Toolbox</h4>';
+          echo "<p>Logged in as ";
+          echo $navlist;
+          echo '</p>';
+          echo "</div>"
+      ?>
         
-  <h4 style="margin-bottom:0"><br/>Views</h4>
-  <ul>
-    <?php foreach($this->data['content_actions'] as $key => $action) {
-       ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
-       <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?>
-       ><a href="<?php echo htmlspecialchars($action['href']) ?>"><?php
-       echo htmlspecialchars($action['text']) ?></a></li>
-    <?php } ?>
-  </ul>
-
-      <h4 style="margin-bottom:0"><?php $this->msg('toolbox') ?></h4>
-	    <ul>
-			<li><a href="http://wiki.creativecommons.org/Special:Recentchanges">Recent Changes</a></li>
-				<!--
-					in the array just  below, 
-					may have to add before 'whatlinkshere' : 'recentchanges',
-				-->
-		  <?php if($this->data['notspecialpage']) { foreach( array( 'whatlinkshere', 'recentchangeslinked' ) as $special ) { ?>
-		  <li id="t-<?php echo $special?>"><a href="<?php
-		    echo htmlspecialchars($this->data['nav_urls'][$special]['href']) 
-		    ?>"><?php echo $this->msg($special) ?></a></li>
-		  <?php } } ?>
-	      <?php if($this->data['feeds']) { ?><li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
-	        ?><span id="feed-<?php echo htmlspecialchars($key) ?>"><a href="<?php
-	        echo htmlspecialchars($feed['href']) ?>"><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
-	        <?php } ?></li>
-	      <?php } ?>
-	      <?php foreach( array('contributions', 'emailuser', 'upload', 'specialpages') as $special ) { ?>
-	      	<?php if($this->data['nav_urls'][$special]) {?><li id="t-<?php echo $special ?>"><a href="<?php
-	        echo htmlspecialchars($this->data['nav_urls'][$special]['href'])
-	        ?>"><?php $this->msg($special) ?></a></li><?php } ?>
-	      <?php } ?>
-	    </ul>
-       
-	<?php if( $this->data['language_urls'] ) { ?><div id="p-lang" class="portlet">
-	  <h5><?php $this->msg('otherlanguages') ?></h5>
-	  <div class="pBody">
-	    <ul>
-	      <?php foreach($this->data['language_urls'] as $langlink) { ?>
-	      <li>
-	      <a href="<?php echo htmlspecialchars($langlink['href'])
-	        ?>"><?php echo $langlink['text'] ?></a>
-	      </li>
-		  <?php } ?>
-	    </ul>
-	  </div>
+      <div class="sideitem">
+        <h4 style="margin-bottom:0">Views</h4>
+        <ul>
+          <?php foreach($this->data['content_actions'] as $key => $action) {
+             ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
+             <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?> >
+               <a href="<?php echo htmlspecialchars($action['href']) ?>"><?php echo htmlspecialchars($action['text']) ?></a>
+             </li>
+          <?php } ?>
+        </ul>
       </div>
       
+      <div class="sideitem">
+        <h4 style="margin-bottom:0"><?php $this->msg('toolbox') ?></h4>
+  	    <ul>
+    			<li><a href="http://wiki.creativecommons.org/Special:Recentchanges">Recent Changes</a></li>
+    				<!--
+    					in the array just  below, 
+    					may have to add before 'whatlinkshere' : 'recentchanges',
+    				-->
+    		  <?php if($this->data['notspecialpage']) { foreach( array( 'whatlinkshere', 'recentchangeslinked' ) as $special ) { ?>
+    		  <li id="t-<?php echo $special?>"><a href="<?php
+    		    echo htmlspecialchars($this->data['nav_urls'][$special]['href']) 
+    		    ?>"><?php echo $this->msg($special) ?></a></li>
+    		  <?php } } ?>
+    	      <?php if($this->data['feeds']) { ?><li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
+    	        ?><span id="feed-<?php echo htmlspecialchars($key) ?>"><a href="<?php
+    	        echo htmlspecialchars($feed['href']) ?>"><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
+    	        <?php } ?></li>
+    	      <?php } ?>
+    	      <?php foreach( array('contributions', 'emailuser', 'upload', 'specialpages') as $special ) { ?>
+    	      	<?php if($this->data['nav_urls'][$special]) {?><li id="t-<?php echo $special ?>"><a href="<?php
+    	        echo htmlspecialchars($this->data['nav_urls'][$special]['href'])
+    	        ?>"><?php $this->msg($special) ?></a></li><?php } ?>
+    	      <?php } ?>
+  	    </ul>
+	    </div>
+       
+	<?php if( $this->data['language_urls'] ) { ?>
+	  <div class="sideitem">
+  	  <div id="p-lang" class="portlet">
+    	  <h5><?php $this->msg('otherlanguages') ?></h5>
+    	  <div class="pBody">
+    	    <ul>
+    	      <?php foreach($this->data['language_urls'] as $langlink) { ?>
+    	      <li>
+    	      <a href="<?php echo htmlspecialchars($langlink['href'])
+    	        ?>"><?php echo $langlink['text'] ?></a>
+    	      </li>
+    		  <?php } ?>
+    	    </ul>
+    	  </div>
+      </div>
+    </div>
       <?php 
-          } 
-      } 
+        }
+      } else { /* user not logged in */
     ?>
 
+    <div class="sideitem">
+      <ul>
+    	    <?php
+    	    if ($this->data['personal_urls']['login']) {
+    		    $loginvar="login";
+    	    } else {
+    		    $loginvar="anonlogin";
+    	    }
+          echo '<li><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</li>';
+          ?><li style="background: url(<?php $this->text('stylepath'); ?>/<?php $this->text('stylename'); ?>/images/openid.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in with OpenID</a></li>
+      </ul>
+    </div>
+    <?
+	  }
+    ?>
+    
+    <div class="sideitem">
+			<ul>
+			 <li><a href="/">Main Page</a></li>
+			 <li><a href="/Developer">Developer Portal</a></li>
+			 <li><a href="/Salon">CC Salons</a></li>
+			 <li><a href="/Frequently_Asked_Questions">CC FAQ</a></li>
+			 <li><a href="/Content_Curators">Content Directories</a></li>
+			</ul>
+		</div>
+
 <!-- end logged in stuff -->
-				  
-					<h4><br/>The Commons</h4>
-					<ul> 
-					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/sc.png"/> <a href="http://sciencecommons.org">Science Commons</a></li>
-					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/cci.png"/> <a href="http://creativecommons.org/international">ccInternational</a></li>
-					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/learn.png"/> <a href="http://learn.creativecommons.org">ccLearn</a></li>
-					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/labs.png"/> <a href="http://labs.creativecommons.org">ccLabs</a></li>
-					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/mix.png"/> <a href="http://ccmixter.org">ccMixter</a></li>
-					  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/ic.png"/> <a href="http://icommons.org">iCommons</a></li>
-					</ul>
-					<br/>
-					<h4>Explore</h4>
-					</ul>
-					 <li><a href="/">Main Page</a></li>
-					 <li><a href="/Developer">Developer Portal</a></li>
-					 <li><a href="/Salon">CC Salons</a></li>
-					 <li><a href="/Frequently_Asked_Questions">CC FAQ</a></li>
-					 <li><a href="/Content_Curators">Content Directories</a></li>
-					</ul>
+  	  <div class="sideitem">
+  			<h4>The Commons</h4>
+  			<ul> 
+  			  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/sc.png"/> <a href="http://sciencecommons.org">Science Commons</a></li>
+  			  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/cci.png"/> <a href="http://creativecommons.org/international">ccInternational</a></li>
+  			  <li><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/learn.png"/> <a href="http://learn.creativecommons.org">ccLearn</a></li>
+  			</ul>
+  		</div>
+
 			</div>
 
       </div> <!-- end wrapper-ie -->
@@ -258,36 +303,12 @@ class CC4Template extends QuickTemplate {
 	  </ul>
     
     <ul> 
-     <?php if(!$userLoggedIn) { 
-	    if ($this->data['personal_urls']['login']) {
-		    $loginvar="login";
-	    } else {
-		    $loginvar="anonlogin";
-	    }
-      echo '<li><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</li>';
-      ?><li style="background: url(<?php $this->text('stylepath'); ?>/<?php $this->text('stylename'); ?>/images/openid.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in using your OpenID</a></li><?
-              //print_r($this->data['personal_urls'][$loginvar]);
-		}
-    ?>
+
  	  <?php if($this->data['about'     ]) { ?><li><?php      $this->html('about')      ?></li><?php } ?>
     </ul>
     
 	  <div id="p-search">
-	    <form name="searchform" action="<?php $this->text('searchaction') ?>" id="searchform">
-        <!--<label for="searchInput"><?php $this->msg('search') ?></label>-->
-	      <input id="searchInput" name="search" type="text"
-	        <?php if($this->haveMsg('accesskey-search')) {
-	          ?>accesskey="<?php $this->msg('accesskey-search') ?>"<?php }
-	        if( isset( $this->data['search'] ) ) {
-	          ?> value="<?php $this->text('search') ?>"<?php } ?> />
-	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
-	        value="<?php $this->msg('search') ?>" /> 
-                  <!--
-                <input type='submit' name="fulltext"
-	        class="searchButton"
-	        value="<?php $this->msg('search') ?>" />
-                -->
-	    </form>
+
 	  </div>
 
 	<?php /*if($this->data['copyrightico']) { ?><div id="f-copyrightico"><?php $this->html('copyrightico') ?></div><?php } */?>
