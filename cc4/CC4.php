@@ -169,7 +169,7 @@ class CC4Template extends QuickTemplate {
       	          ?>accesskey="<?php $this->msg('accesskey-search') ?>"<?php }
       	        if( isset( $this->data['search'] ) ) {
       	          ?> value="<?php $this->text('search') ?>"<?php } ?> />
-      	      <input type='submit' name="go" id="searchSubmit"
+      	      <input type='submit' name="go" id="searchsubmit"
       	        value="<?php $this->msg('search') ?>" /> 
                         <!--
                       <input type='submit' name="fulltext"
