@@ -243,7 +243,7 @@ class CC4Template extends QuickTemplate {
 					 <li><a href="/Developer">Developer Portal</a></li>
 					 <li><a href="/Salon">CC Salons</a></li>
 					 <li><a href="/Frequently_Asked_Questions">CC FAQ</a></li>
-					 <li><a href="/Content_Curators">Content Directories</a></li>
+					 <li><a href="/Content_Directories">Content Directories</a></li>
 					</ul>
 			</div>
 
