@@ -328,7 +328,7 @@ class CC4Template extends QuickTemplate {
           <p class="box">
             <a href="http://www.mediawiki.org/"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/mediawiki.png" border="0" alt="" id="mw" /></a>
             <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a>
-            Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
+            Except where otherwise <a class="subfoot" href="http://creativecommons.org/policies#license">noted</a>, content on this site is<br/>licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
           </p>
         </div>
       </div> <!-- end footer -->
