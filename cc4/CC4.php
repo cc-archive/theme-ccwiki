@@ -101,7 +101,14 @@ class CC4Template extends QuickTemplate {
     <!-- END HEADER -->
         <div id="mainmenu">
       <ul id="navbar" class="box">
-        <li class="inactive"><a href="http://creativecommons.org/" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="http://creativecommons.org/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="inactive"><a href="http://creativecommons.org/projects/" title="Projects"><span>Projects</span></a></li>      <li class="active"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="http://creativecommons.org/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="http://creativecommons.org/contact/" title="Contact"><span>Contact</span></a></li> 
+		<li class="inactive"><a href="http://creativecommons.org/" title="Home"><span>Home</span></a></li>      
+		<li class="inactive"><a href="http://creativecommons.org/about/" title="About"><span>About</span></a></li>      
+		<li class="inactive"><a href="/FFAQ" title="FAQ"><span>FAQ</span></a></li>
+		<li class="donate inactive"><a href="http://support.creativecommons.org" title="Donate"><span>Donate</span></a></li>      
+		<li class="active"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>" title="Wiki"><span>Wiki</span></a></li>      
+		<li class="inactive"><a href="http://creativecommons.org/projects/" title="Projects"><span>Projects</span></a></li>     
+		<li class="inactive"><a href="http://creativecommons.org/international/" title="International"><span>International</span></a></li>      
+		<li class="inactive"><a href="http://creativecommons.org/contact/" title="Contact"><span>Contact</span></a></li> 
       </ul>
       <div class="clear"></div>
     </div>
@@ -198,9 +205,6 @@ class CC4Template extends QuickTemplate {
              ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
              <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?> >
                <a href="<?php echo htmlspecialchars($action['href']) ?>"><?php echo htmlspecialchars($action['text']) ?></a>
-                <?php if ( "edit" == htmlspecialchars($key) ) { ?> 
-                <link rel="alternate" type="application/x-wiki" title="Edit this page!" href="<?php echo htmlspecialchars($action['href']) ?>" /> 
-                <?php } ?>
              </li>
           <?php } ?>
         </ul>
@@ -283,11 +287,11 @@ class CC4Template extends QuickTemplate {
 <!-- end logged in stuff -->
   	  <div class="sideitem">
   			<h4>The Commons</h4>
-  			<ul> 
-  			  <li><a href="https://creativecommons.net">CC Network</a></li>
-  			  <li><a href="http://sciencecommons.org">Science Commons</a></li>
-  			  <li><a href="http://creativecommons.org/international">ccInternational</a></li>
-  			  <li><a href="http://learn.creativecommons.org">ccLearn</a></li>
+			<ul>
+			  <li><a href="https://creativecommons.org/">CC Network</a></li> 
+  			  <li><a href="http://sciencecommons.org/">Science Commons</a></li>
+  			  <li><a href="http://creativecommons.org/international/">ccInternational</a></li>
+  			  <li><a href="http://learn.creativecommons.org/">ccLearn</a></li>
   			</ul>
   		</div>
 
