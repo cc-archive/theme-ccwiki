@@ -281,7 +281,6 @@ class CC4Template extends QuickTemplate {
 			<ul>
              <li><a href="<?php echo htmlspecialchars($this->data['content_actions']['talk']['href']); ?>">Discuss this page</a></li>
 			 <li><a href="/">Main Page</a></li>
-			 <li><a href="/">Main Page</a></li>
 			 <li><a href="/Developer">Developer Portal</a></li>
 			 <li><a href="/Casestudies">Case Studies</a></li>
 			 <li><a href="/Salon">CC Salons</a></li>
