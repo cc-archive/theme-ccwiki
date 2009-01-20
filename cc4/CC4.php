@@ -203,6 +203,10 @@ class CC4Template extends QuickTemplate {
         <ul>
           <?php foreach($this->data['content_actions'] as $key => $action) {
              ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
+             # Talk pages are anonymously editable now, so dont
+             # display the link here, which is just a list of
+             # things a logged in user can do.
+             <?php if ( $key == "talk" ) { continue; } ?>
              <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?> >
                <a href="<?php echo htmlspecialchars($action['href']) ?>"><?php echo htmlspecialchars($action['text']) ?></a>
              </li>
@@ -275,6 +279,8 @@ class CC4Template extends QuickTemplate {
     
     <div class="sideitem">
 			<ul>
+             <li><a href="<?php echo htmlspecialchars($this->data['content_actions']['talk']['href']); ?>">Discuss this page</a></li>
+			 <li><a href="/">Main Page</a></li>
 			 <li><a href="/">Main Page</a></li>
 			 <li><a href="/Developer">Developer Portal</a></li>
 			 <li><a href="/Casestudies">Case Studies</a></li>
