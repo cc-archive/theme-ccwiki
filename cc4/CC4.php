@@ -195,7 +195,23 @@ class CC4Template extends QuickTemplate {
           echo "<p>Logged in as ";
           echo $navlist;
           echo '</p>';
-          echo "</div>"
+          echo "</div>";
+      } else {
+      ?>
+    <div class="sideitem">
+      <ul>
+    	    <?php
+    	    if ($this->data['personal_urls']['login']) {
+    		    $loginvar="login";
+    	    } else {
+    		    $loginvar="anonlogin";
+    	    }
+          echo '<li><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</li>';
+          ?><li style="background: url(<?php $this->text('stylepath'); ?>/<?php $this->text('stylename'); ?>/images/openid.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in with OpenID</a></li>
+      </ul>
+    </div>
+    <?php
+      }
       ?>
         
       <div class="sideitem">
@@ -203,10 +219,6 @@ class CC4Template extends QuickTemplate {
         <ul>
           <?php foreach($this->data['content_actions'] as $key => $action) {
              ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
-             # Talk pages are anonymously editable now, so dont
-             # display the link here, which is just a list of
-             # things a logged in user can do.
-             <?php if ( $key == "talk" ) { continue; } ?>
              <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?> >
                <a href="<?php echo htmlspecialchars($action['href']) ?>"><?php echo htmlspecialchars($action['text']) ?></a>
              </li>
@@ -258,28 +270,11 @@ class CC4Template extends QuickTemplate {
     </div>
       <?php 
         }
-      } else { /* user not logged in */
     ?>
 
-    <div class="sideitem">
-      <ul>
-    	    <?php
-    	    if ($this->data['personal_urls']['login']) {
-    		    $loginvar="login";
-    	    } else {
-    		    $loginvar="anonlogin";
-    	    }
-          echo '<li><a href="'.htmlspecialchars($this->data['personal_urls'][$loginvar]['href']).'">'.htmlspecialchars($this->data['personal_urls'][$loginvar]['text']).'</a>'.'</li>';
-          ?><li style="background: url(<?php $this->text('stylepath'); ?>/<?php $this->text('stylename'); ?>/images/openid.gif) no-repeat 4px 40%; padding-left: 25px;"><a href="/Special:OpenIDLogin">log in with OpenID</a></li>
-      </ul>
-    </div>
-    <?
-	  }
-    ?>
     
     <div class="sideitem">
 			<ul>
-             <li><a href="<?php echo htmlspecialchars($this->data['content_actions']['talk']['href']); ?>">Discuss this page</a></li>
 			 <li><a href="/">Main Page</a></li>
 			 <li><a href="/Developer">Developer Portal</a></li>
 			 <li><a href="/Casestudies">Case Studies</a></li>
