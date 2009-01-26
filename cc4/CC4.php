@@ -221,6 +221,11 @@ class CC4Template extends QuickTemplate {
              ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
              <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?> >
                <a href="<?php echo htmlspecialchars($action['href']) ?>"><?php echo htmlspecialchars($action['text']) ?></a>
+
+             <?php if ( "edit" == htmlspecialchars($key) ) { ?>    
+                 <link rel="alternate" type="application/x-wiki" title="Edit this page!" href="<?php echo htmlspecialchars($action['href']) ?>" />    
+             <?php } ?>
+
              </li>
           <?php } ?>
         </ul>
