@@ -86,7 +86,7 @@ if ( count($this->data['skin']->mTitle->mRestrictions['edit']) ) {
         $mayEdit = 'yes';
 }
 if ( 'yes' == $mayEdit ) { 
-        echo "<link rel='alternate' type='application/x-wiki' title='Edit this page!' href='" . htmlspecialchars($action['href']) . "' />";    
+        echo "<link rel='alternate' type='application/x-wiki' title='Edit this page!' href='/index.php?title=" . htmlspecialchars($this->data['title']) . "&action=edit' />";    
 }
 ?>
 
