@@ -64,6 +64,32 @@ class CC4Template extends QuickTemplate {
 
    <?php $this->html('headscripts') ?>
 
+<?php
+/**
+ * We want to display the Universal Edit Button on all pages that
+ * are even potentially editable, even if a user must first login
+ * to edit that page.  However, some pages are protected and we
+ * don't want to show the UEB if the user isn't in a group that
+ * can edit the page. There may be some nice internal API to do
+ * all of this or find user groups, etc, but I don't currently
+ * know of it, so this seems to work well enough for now.
+ * (nkinkade 2009-01-26)
+ */
+$mayEdit = 'no';
+if ( count($this->data['skin']->mTitle->mRestrictions['edit']) ) { 
+        foreach ( $this->data['skin']->mUser->mGroups as $uGroups ) { 
+                if ( in_array($uGroups, $this->data['skin']->mTitle->mRestrictions['edit']) ) {
+                        $mayEdit = 'yes';
+                }
+        }
+} else {
+        $mayEdit = 'yes';
+}
+if ( 'yes' == $mayEdit ) { 
+        echo "<link rel='alternate' type='application/x-wiki' title='Edit this page!' href='/index.php?title=" . htmlspecialchars($this->data['title']) . "&action=edit' />";    
+}
+?>
+
   </head>
   <body <?php if($this->data['body_ondblclick']) { ?>ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
         <?php if($this->data['nsclass'        ]) { ?>class="<?php      $this->text('nsclass')         ?>"<?php } ?>
@@ -221,11 +247,6 @@ class CC4Template extends QuickTemplate {
              ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
              <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?> >
                <a href="<?php echo htmlspecialchars($action['href']) ?>"><?php echo htmlspecialchars($action['text']) ?></a>
-
-             <?php if ( "edit" == htmlspecialchars($key) ) { ?>    
-                 <link rel="alternate" type="application/x-wiki" title="Edit this page!" href="<?php echo htmlspecialchars($action['href']) ?>" />    
-             <?php } ?>
-
              </li>
           <?php } ?>
         </ul>
