@@ -219,7 +219,7 @@ class CC5 extends QuickTemplate {
               <?php echo $this->skin->tooltipAndAccesskey('search');
      					if( isset( $this->data['search'] ) ) {
      						?> value="<?php $this->text('search') ?>" <?php } ?> 
-     				  name="s" id="s" class="inactive" /> <input type="submit" id="searchsubmit" value="Go" />
+     				  name="search" id="search" class="inactive" /> <input type="submit" id="searchsubmit" value="Go" />
            </div>
          </form>
          <?php if ($this->data['personal_urls']['login']) { ?>
