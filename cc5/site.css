@@ -80,10 +80,10 @@ img.mugshot {
 	background: #fff url('images/header-bar-full.png') repeat-x top left;
 }
 
-#s.inactive {
+#search.inactive {
 	color: #666;
 }
-#s.active {
+#search.active {
 	color: #000;
 }
 
