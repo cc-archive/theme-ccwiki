@@ -96,7 +96,7 @@ function wakeSearch(e) {
 	return false;
 }
 function resetSearch(e) {
-	var search = document.getElementById("s");
+	var search = document.getElementById("search");
 	if (search.value == "") {
 		search.value = searchValue;
 		YAHOO.util.Dom.replaceClass(search, "active", "inactive");
@@ -112,9 +112,9 @@ YAHOO.cc.help.init = function() {
 	YAHOO.util.Dom.getElementsByClassName('helpLink', null, null,
 											YAHOO.cc.help.init_help_item);
 	
-	document.getElementById("s").value = searchValue;
-	YAHOO.util.Event.addListener("s", "click", wakeSearch);
-	YAHOO.util.Event.addListener("s", "blur", resetSearch);
+	document.getElementById("search").value = searchValue;
+	YAHOO.util.Event.addListener("search", "click", wakeSearch);
+	YAHOO.util.Event.addListener("search", "blur", resetSearch);
 } // init
 
 YAHOO.util.Event.onDOMReady(YAHOO.cc.help.init);
