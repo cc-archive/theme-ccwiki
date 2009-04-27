@@ -87,7 +87,7 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
 var searchValue = "Search wiki";
 
 function wakeSearch(e) {
-		var search = document.getElementById("s");
+		var search = document.getElementById("search");
 
 		if (search.value == searchValue) {
 			search.value = "";
