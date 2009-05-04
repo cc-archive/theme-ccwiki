@@ -112,7 +112,7 @@ class CC5 extends QuickTemplate {
        <ul>
          <li><a href="http://creativecommons.org/">CC Home</a></li>
          <li><a href="/FAQ">FAQ</a></li>
-         <li><a href="/Casestudies">Case Studies</a></li>
+         <li><a href="/Case_Studies">Case Studies</a></li>
          <li><a href="/Events">Events</a></li>
          <li><a href="/Content_Directories">Content Directories</a></li>
          <li><a href="/Developers">Developers</a></li>
