@@ -226,8 +226,8 @@ class CC5 extends QuickTemplate {
          <span><a href="/index.php?title=Special:Userlogin&amp;returnto=Documentation">Log in / create account</a></span>
          <span>(<a href="/Special:OpenIDLogin">OpenID</a>)</span>
          <?php } ?>
-       </div>
-       
+	   </div>
+	   <div id="contentSub"><h3 class="category"><?php echo str_replace("&lt; ", "", $this->data['subtitle']) ?></h3></div> 
        <?php
        if ($this->data['title'] != 'Main Page') {
          ?><h2><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h2><?php
