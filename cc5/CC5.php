@@ -35,7 +35,15 @@ class SkinCC5 extends SkinTemplate {
  * @ingroup Skins
  */
 class CC5 extends QuickTemplate {
-	var $skin;
+		var $skin;
+
+	function cleanTitle($whichTitle = 'title') {
+		global $wgRequest;
+		if ($slashPos = strpos($this->data[$whichTitle], "/")) {
+			return substr_replace($this->data[$whichTitle], "", 0, $slashPos + 1);
+		}
+		return $this->data[$whichTitle];
+	}
 	/**
 	 * Template filter callback for MonoBook skin.
 	 * Takes an associative array of data set from a SkinTemplate-based
@@ -64,7 +72,7 @@ class CC5 extends QuickTemplate {
 	<head>
 		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
 		<?php $this->html('headlinks')?> 
-		<title><?php if ($this->data['title'] != 'Main Page') { echo $this->text('pagetitle'); ?><?php } else { ?>Creative Commons Wiki <?php } ?></title>
+		<title><?php if ($this->data['title'] != 'Main Page') { echo $this->cleanTitle('pagetitle'); ?><?php } else { ?>Creative Commons Wiki <?php } ?></title>
 		<?php $this->html('csslinks') ?>
 
 		<!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
@@ -230,7 +238,7 @@ class CC5 extends QuickTemplate {
 	   <div id="contentSub"><h3 class="category"><?php echo str_replace("&lt; ", "", $this->data['subtitle']) ?></h3></div> 
        <?php
        if ($this->data['title'] != 'Main Page') {
-         ?><h2><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h2><?php
+		 ?><h2><?php /*$this->data['displaytitle']!=""?$this->html('title'):$this->text('title')*/ echo $this->cleanTitle();  ?></h2><?php
        } else {
          ?><h2>Creative Commons Wiki</h2><?php
        }
